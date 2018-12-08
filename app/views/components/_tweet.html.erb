@@ -1,0 +1,33 @@
+<div class="tweet">
+  <div class="tweet-img-user">
+    <%=image_tag tweet.user.photo.url, class: 'profile-img' %>
+  </div>
+  <div class="tweet-body">
+    <div class="tweet-header">
+      <%= link_to user_path(tweet.user), class: 'tweet-display-name' do %>
+
+        <div style='color: rgba(0,0,0,0.5)'><span style='color: #000; font-weight: bold'><%= tweet.user.first_name%></span> @<%= tweet.user.email.split('@')[0]%></div>
+      <% end %>
+      <span style='color: rgba(0,0,0,0.5)'><%=tweet.created_at%></span>
+    </div>
+    <p class='tweet-message'>
+      <%= tweet.message %>
+    </p>
+    <%= link_to tweet_path(tweet) do %>
+      <% if tweet.photo.url != "/photos/original/missing.png" %>
+        <%= image_tag tweet.photo.url, class: 'tweet-img'%>
+      <% end %>
+    <%end%>
+    <div class="tweet-footer">
+      <div class="group-icons">
+        <div>
+          <%= link_to tweet_path(tweet) do %>
+            <i id='comment' class='icon comment link outline'></i> <%=tweet.comments.size %>
+          <% end %>
+        </div>
+        <div><i class='icon retweet link'></i> <%=tweet.retweet %></div>
+        <div><i class='icon heart outline link'></i> <%=tweet.likes %></div>
+      </div>
+    </div>
+  </div>
+</div>

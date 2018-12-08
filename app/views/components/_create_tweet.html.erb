@@ -1,0 +1,23 @@
+<div class="tweet-form">
+  <div class="tweet-user-img">
+    <%=image_tag @user.photo.url %>
+  </div>
+  <div class="tweet-input">
+    <%= form_for(@tweet, remote: true,  html: {class: 'ui form', id: 'tweet'} ) do |f| %>
+    <div class="field">
+      <%= f.text_area :message, rows: '2' %>
+    </div>
+    <div class="tweet-options">
+      <div class="">
+        <label>
+          <i class='icon ui blue image file pointer' style='font-size: 23px'></i>
+          <%= f.file_field :photo, style: 'display: none' %>
+        </label>
+      </div>
+      <div class="">
+        <%= f.submit 'Tweet', class: 'ui primary basic button' %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

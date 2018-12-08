@@ -1,0 +1,28 @@
+<div class="profile">
+  <div class="profile-card">
+    <div class="profile-header">
+
+    </div>
+    <div class="profile-body">
+      <div class="profile-user">
+        <%= image_tag @user.photo.url, class: 'profile-img' %>
+        <div class="profile-name">
+          <%=link_to user_path(@user) do%>
+            <div class='profile-display-name'><%= @user.first_name %></div>
+            <div class='profile-display-nickname'>@<%= @user.email.split('@')[0]%></div>
+          <%end%>
+        </div>
+      </div>
+      <div class="profile-details">
+        <div class="profile-tweets">
+          <div>Tweets</div>
+          <div class='twitter-color'><%=@user.tweets.size%></div>
+        </div>
+        <div class="profile-tweets">
+          <div>Following</div>
+          <div class='twitter-color'><%=@user.follows.size %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

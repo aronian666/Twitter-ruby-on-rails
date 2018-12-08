@@ -1,0 +1,35 @@
+<div class="login">
+  <div class="left">
+    <div class="">
+      <div class="left-item">
+        <i class='icon search'></i>
+        Sigue lo que te interesa.
+      </div>
+      <div class="left-item">
+        <i class="users icon"></i>
+        Entérate de lo que está hablando la gente.
+      </div>
+      <div class="left-item">
+        <i class='icon comment outline'></i>
+        Únete a la conversación
+      </div>
+    </div>
+  </div>
+  <div class="login-form">
+    <%= form_for(:session, url: login_path) do |f| %>
+      <%= f.email_field :email, class: 'login-input', placeholder: 'Correo electrónico' %>
+      <%= f.password_field :password, class: 'login-input', placeholder: 'Contraseña' %>
+      <%= f.submit 'Iniciar sesión', class: 'login-button' %>
+    <% end %>
+    <div class="login-details">
+      <div class="">
+
+      </div>
+      <h1>Descubre lo que está pasando en el mundo en este momento</h1>
+      <div class="">
+        <h4>Únete hoy a Algo</h4>
+        <%=link_to 'Registrarse' ,'/signup', class: 'login-button registrarse' %>
+      </div>
+    </div>
+  </div>
+</div>

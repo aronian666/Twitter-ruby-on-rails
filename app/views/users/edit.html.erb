@@ -1,0 +1,49 @@
+<%= render 'components/header' %>
+<div class="tweets container">
+<% if @user.id == session[:user_id] %>
+    <div class="profile">
+      <div class="profile-card">
+        <div class="profile-header">
+        </div>
+        <div class="profile-body">
+          <div class="profile-user">
+            <div>
+              <%= form_for(@user, html: {class: 'ui form'}) do |f|%>
+              <label class='pointer'>
+                <i class='icon plus inverted' style='position: relative; left: 50px; bottom: 45px; z-index: 100'></i>
+                <%= image_tag @user.photo.url, class: 'profile-img' %>
+                <%= f.file_field :photo, style: 'display: none' %>
+              </label>
+              <div class="field">
+                <%= f.text_field :first_name, placeholder: 'Apellidos' %>
+              </div>
+              <div class="field">
+                <%= f.text_field :last_name, placeholder: 'Nombres' %>
+              </div>
+              <%= f.submit 'Actualizar', class: 'ui button primary basic tiny' %>
+              <%= link_to 'Cancelar', user_path(@user), class: 'ui negative basic tiny button'%>
+              <% end %>
+            </div>
+          </div>
+          <div class="profile-details">
+            <div class="profile-tweets">
+              <div>Tweets</div>
+              <div><%=@user.tweets.size%></div>
+            </div>
+            <div class="profile-follows">
+              <div>Following</div>
+              <div><%=@user.follows.size %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="body">
+      <%= render 'components/create_tweet', locals: {user: @user, tweet: @tweet}%>
+      <%= render partial: 'components/tweet', collection: @tweets.reverse %>
+    </div>
+    <%=render 'components/users', locals: {users: @users} %>
+<% else %>
+  <h1>No puedes acceder a esta opcion papi :v</h1>
+<% end %>
+</div>

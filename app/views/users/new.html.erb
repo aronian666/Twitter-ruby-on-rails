@@ -1,0 +1,42 @@
+<div class="login">
+  <div class="left">
+    <div class="">
+      <div class="left-item">
+        <i class='icon search'></i>
+        Sigue lo que te interesa.
+      </div>
+      <div class="left-item">
+        <i class="users icon"></i>
+        Entérate de lo que está hablando la gente.
+      </div>
+      <div class="left-item">
+        <i class='icon comment outline'></i>
+        Únete a la conversación
+      </div>
+    </div>
+  </div>
+  <div class="login-form">
+    <h1 style='text-align: center'>Registrate</h1>
+    <div class="" style='width: 50%; margin: 25px auto'>
+      <%= form_for(@user, html: {class: 'ui form'}) do |f| %>
+      <div class="field">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, placeholder: 'Nombres' %>
+      </div>
+      <div class="field">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, placeholder: 'Apellidos' %>
+      </div>
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.email_field :email, placeholder: 'Correo electrónico' %>
+      </div>
+      <div class="field">
+        <%= f.label :password %>
+        <%= f.password_field :password, placeholder: 'Contraseña' %>
+      </div>
+      <%= f.submit 'Registrarse', class: 'registrarse login-button', style: 'width: 100%' %>
+      <% end %>
+    </div>
+  </div>
+</div>

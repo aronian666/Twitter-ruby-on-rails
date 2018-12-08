@@ -1,0 +1,13 @@
+  <% if @user %>
+    <%= render 'components/header' %>
+    <div class="tweets container">
+      <%= render 'components/profile', locals: { user: @user } %>
+      <div class="body">
+        <%= render 'components/create_tweet', locals: {user: @user, tweet: @tweet}%>
+        <%= render partial: 'components/tweet', collection: @tweets.reverse %>
+      </div>
+      <%= render 'components/users', locals: { user: @users} %>
+    </div>
+  <% else %>
+    <%=render 'components/login' %>
+  <% end %>

@@ -1,0 +1,24 @@
+<%= render 'components/header' %>
+<div class="tweets container">
+  <%= render 'components/profile', locals: { user: @user } %>
+  <div class="body">
+    <%= render partial: 'components/tweet', locals: {tweet: @tweet} %>
+    <div id='tweet-comments' class="tweet-comments">
+      <div class="ui comments">
+        <%= render partial: 'components/comment', collection: @tweet.comments %>
+        <%= form_with(model: [ @tweet, @tweet.comments.build ], remote: true, local: true, html: {class: 'ui reply form'}) do |form| %>
+          <div class="comment">
+            <a class='avatar'>
+                <%= image_tag @user.photo.url %>
+            </a>
+            <div class="content">
+              <%= form.text_field :message, rows: '1', placeholder: 'Ingresa un comentario', autocomplete: 'off' %>
+              <%= form.submit 'Comentar', class: 'ui primary submi button', style: 'display: none' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <%= render 'components/users', locals: { user: @users} %>
+</div>
